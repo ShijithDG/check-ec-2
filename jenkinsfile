@@ -18,7 +18,7 @@ pipeline {
 
         stage('Archive Artifact') {
             steps {
-                // Archive the output file
+                // Archive the output file one
                 archiveArtifacts artifacts: 'output.txt', fingerprint: true
             }
         }
