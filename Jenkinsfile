@@ -12,7 +12,7 @@ pipeline {
         stage('Run Script') {
             steps {
                 // Run the Python script
-                sh 'python3 addition.py > output.txt',
+                sh 'python3 addition.py > output.txt'
                 sh 'apt-get update && apt-get install -y awscli'
             }
         }
@@ -23,12 +23,12 @@ pipeline {
                 archiveArtifacts artifacts: 'output.txt', fingerprint: true
             }
         }
-        stage{
+        stage('making artifacts'){
             steps{
                 sh 'tar -cvf my_app.tar.gz addition.py nul.py ' 
             }
         }
-        stage{
+        stage('deploy-artifact-s3 '){
             steps{
                 withCredentials([[
                     $class:'AmazonWebServicesCredentialsBinding',
