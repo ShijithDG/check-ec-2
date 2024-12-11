@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the GitHub repository
-                git branch: 'main', url: 'git@github.com:ShijithDG/check-ec-2.git'
+                git branch: 'main', url: 'https://github.com/ShijithDG/shijith-check-git-jenkins.git'
             }
         }
 
