@@ -13,6 +13,7 @@ pipeline {
             steps {
                 // Run the Python script
                 sh 'python3 addition.py > output.txt'
+                sh 'apt-get update && apt-get install -y awscli'
             }
         }
 
