@@ -22,6 +22,21 @@ pipeline {
                 archiveArtifacts artifacts: 'output.txt', fingerprint: true
             }
         }
+        stage{
+            steps{
+                sh 'tar -cvf my_app.tar.gz addition.py nul.py ' 
+            }
+        }
+        stage{
+            steps{
+                withCredentials([[
+                    $class:'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'jenkins-S3'
+                ]]){
+                    sh 'aws s3 cp my_app.tar.gz s3://shijith-jenkins --region ap-south-1'
+                }
+            }
+        }
     }
     post{
         success{
