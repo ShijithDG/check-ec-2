@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the GitHub repository
-                git branch: 'main', url: 'https://github.com/ShijithDG/check-ec-2.git'
+                git branch: 'main', url: 'git@github.com:ShijithDG/check-ec-2.git'
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('making artifacts'){
             steps{
-                sh 'tar -cvf my_app.tar.gz addition.py nul.py ' 
+                sh 'tar -cvf my_app.tar.gz addition.py mul.py ' 
             }
         }
         stage('deploy-artifact-s3 '){
